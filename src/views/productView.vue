@@ -1,17 +1,11 @@
 <template>
   <div>
     <TheNavigation />
-    <h3>Products</h3>
+    <h3>Product Details</h3>
     <div v-if="!product">Loading....</div>
-
-    <div v-for="product in products.products" :key="product.category">
-      <img :src="product.images[0]" alt="" />
-
-      {{ product.title }}
-      {{ product.price }}
-      {{ product.category }}
-      {{ product.brand }}
-      {{ product.description }}
+    <div v-else>
+      <img :src="product.thumbnail" :alt="product.title" />
+      title: {{ product.title }}
     </div>
   </div>
 </template>
@@ -25,16 +19,23 @@ export default {
   },
   data() {
     return {
-      products: [],
+      product: null,
       loading: true,
       errored: false,
     };
   },
+  // beforeRouteEnter(to, from, next) {
+  //   next((vm) => {
+  //     if (!vm.$store.getters.isAuthenticated) {
+  //       return vm.$router.push("/login");
+  //     }
+  //   });
+  // },
+
   mounted() {
     axios
-      .get("https://dummyjson.com/products")
-      // .then((res) => res.json());
-      .then((response) => (this.products = response.data));
+      .get(`https://dummyjson.com/products/${this.$route.params.id}`)
+      .then((response) => (this.product = response.data));
   },
 };
 </script>

@@ -3,16 +3,19 @@
   <div class="login-wrapper">
     <form @submit.prevent="submitForm">
       <div>
-        <Input v-model="Username" type="text" placeholder="Username">
-          <font-awesome-icon icon="fa-solid fa-user" />
-        </Input>
+        <input v-model="username" type="text" placeholder="Username" required />
 
-        <Input v-model="password" type="password" placeholder="password" />
-        <button>Login</button>
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
       </div>
       <div>
         I don't have an account?
-        <router-link to="/Signup"> sign up</router-link>
+        <router-link to="/signup"> Sign up</router-link>
       </div>
     </form>
     <!-- <img :src="bg" alt="flower" /> -->
@@ -30,7 +33,18 @@ export default {
   data: function () {
     return {
       bg: bgImages,
+      username: "",
+      password: "",
     };
+  },
+  methods: {
+    async submitForm() {
+      await this.$store.dispatch("login", {
+        username: this.username,
+        password: this.password,
+      });
+      this.$router.push("/products");
+    },
   },
 };
 </script>

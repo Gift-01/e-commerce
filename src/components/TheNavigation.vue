@@ -7,8 +7,13 @@
       <div class="router">
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
-        <router-link to="/Login">Login</router-link>
-        <router-link to="/Product"> Product</router-link>
+
+        <template v-if="$store.getters.isAuthenticated">
+          <router-link to="/products"> Products</router-link>
+          <span>{{ user.username }}</span>
+          <router-link to="#" @click="logout"> Logout</router-link>
+        </template>
+        <router-link v-else to="/login">Login</router-link>
       </div>
     </nav>
   </div>
@@ -16,11 +21,19 @@
 
 <script>
 import bgImages from "../assets/retro-flowers.webp";
+import { useUser } from "@/composables/user";
 export default {
   data: function () {
     return {
       bg: bgImages,
+      user: useUser(),
     };
+  },
+  methods: {
+    async logout() {
+      await this.$store.dispatch("logout");
+      this.$router.replace("/login");
+    },
   },
 };
 </script>

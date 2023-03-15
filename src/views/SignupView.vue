@@ -8,13 +8,22 @@
     <div class="login-wrapper">
       <form @submit.prevent="submitForm">
         <div>
-          <Input v-model="Username" type="text" placeholder="Username">
-            <font-awesome-icon icon="fa-solid fa-user" />
-          </Input>
+          <input
+            v-model="username"
+            type="text"
+            placeholder="Username"
+            required
+          />
+          <!-- <font-awesome-icon icon="fa-solid fa-user" /> -->
 
-          <Input v-model="password" type="password" placeholder="password" />
-          <Input v-model="email" type="email" placeholder="@ email" />
-          <button>Sign up</button>
+          <input
+            v-model="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <input v-model="email" type="email" placeholder="@ email" required />
+          <button type="submit">Sign up</button>
         </div>
       </form>
     </div>
@@ -31,7 +40,24 @@ export default {
   data: function () {
     return {
       bg: bgImages,
+      username: "",
+      email: "",
+      password: "",
     };
+  },
+  methods: {
+    async submitForm() {
+      await this.$store.dispatch("signup", {
+        username: this.username,
+        email: this.email,
+        password: this.password,
+      });
+      await this.$store.dispatch("login", {
+        username: this.username,
+        password: this.password,
+      });
+      this.$router.push("/products");
+    },
   },
 };
 </script>
