@@ -14,7 +14,7 @@
 
           <Input v-model="password" type="password" placeholder="password" />
           <Input v-model="email" type="email" placeholder="@ email" />
-          <button>Sign upg</button>
+          <button>Sign up</button>
         </div>
       </form>
     </div>

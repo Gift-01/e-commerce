@@ -9,7 +9,6 @@
         <router-link to="/about">About</router-link>
         <router-link to="/Login">Login</router-link>
         <router-link to="/Product"> Product</router-link>
-        <router-link to="/Signup"> sign up</router-link>
       </div>
     </nav>
   </div>
@@ -39,17 +38,6 @@ nav {
   /* margin: 35px 99px 0px 0px; */
 }
 
-/* .router {
-  width: 955px;
-  height: 38px;
-  border-radius: 24px;
-  margin: 35px 99px 0px 99px;
-  display: flex;
-  justify-content: right;
-  align-items: flex-end;
-  color: black;
-} */
-
 .router a {
   font-weight: bold;
   margin-left: 41px;
@@ -66,10 +54,5 @@ nav {
 img {
   width: 20px;
   height: 20px;
-}
-.logo {
-  /* margin: 0px 10px; */
-  /* display: flex;
-  justify-content: flex-start; */
 }
 </style>
