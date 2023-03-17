@@ -65,7 +65,7 @@ input {
   height: 75px;
   border-radius: 80px;
   margin-bottom: 25px;
-  /* padding-left: 20px; */
+  padding-left: 20px;
   outline: none;
   background-color: rgb(187, 184, 184);
   border: none;
