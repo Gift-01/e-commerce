@@ -1,16 +1,20 @@
 <template>
-  <div>
+  <div class="container">
     <TheNavigation />
-    <h3>Products</h3>
+    <h3>PRODUCTS</h3>
+    <div class="wrapper">
+      <router-link
+        :to="{ name: 'ProductView', params: { id: product.id } }"
+        v-for="product in data.products"
+        :key="product.id"
+      >
+        <img :src="product.images[0]" :alt="product.title" />
+        <p class="product-title">
+          {{ product.title }}
+        </p>
+      </router-link>
+    </div>
     <!-- <div v-if="!product">Loading....</div> -->
-    <router-link
-      :to="{ name: 'ProductView', params: { id: product.id } }"
-      v-for="product in data.products"
-      :key="product.id"
-    >
-      <img :src="product.images[0]" :alt="product.title" />
-      {{ product.title }}
-    </router-link>
   </div>
 </template>
 <script>
@@ -37,7 +41,62 @@ export default {
 </script>
 <style scoped>
 img {
-  width: 50px;
-  height: 50px;
+  /* width: 100px;
+  min-height: 100px;
+  display: flex;
+  border-radius: 50px;
+  margin-left: auto; */
+  /* margin-right: 5vw; */
+  /* background-color: #fff;
+  width: 400px;
+  text-align: center;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 5px; */
+  /* width: 100px; */
+  height: 300px;
+}
+.container {
+  min-height: 100vh;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: auto auto auto;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 40px;
+  line-height: 64px;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.product-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    display: block;
+  }
+  a {
+    padding: 0px;
+  }
 }
 </style>

@@ -4,17 +4,12 @@
   </div>
 </template>
 
-<style></style>
-//
-<script>
-// import bgImage from "./assets/bgImage.jpeg";
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+</style>
 
-// export default {
-//   data: function () {
-//     return {
-//       bg: bgImage,
-//     };
-//   },
-// };
-//
-</script>
+<script></script>

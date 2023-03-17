@@ -1,20 +1,26 @@
 <template>
-  <div class="main-container">
-    <div class="logo">
-      <img :src="bg" alt="flower" />
-    </div>
-    <nav>
-      <div class="router">
-        <router-link to="/">Home</router-link>
-        <router-link to="/about">About</router-link>
-
+  <div class="header">
+    <a href="#" class="logo">shopify</a>
+    <input class="side-menu" type="checkbox" id="side-menu" />
+    <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+    <nav class="nav">
+      <ul class="menu">
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
         <template v-if="$store.getters.isAuthenticated">
-          <router-link to="/products"> Products</router-link>
-          <span>{{ user.username }}</span>
-          <router-link to="#" @click="logout"> Logout</router-link>
+          <li>
+            <router-link to="/products"> Products</router-link>
+          </li>
+          <!-- <span>{{ user.username }}</span> -->
+          <li>
+            <router-link to="#" @click="logout"> Logout</router-link>
+          </li>
         </template>
-        <router-link v-else to="/login">Login</router-link>
-      </div>
+        <li v-else>
+          <router-link to="/login">Login</router-link>
+        </li>
+      </ul>
     </nav>
   </div>
 </template>
@@ -39,33 +45,119 @@ export default {
 </script>
 
 <style scoped>
-.main-container {
+.header {
   background-color: black;
-  height: 68px;
+  box-shadow: 1px 1px 5px 0px var(--gray);
+  position: sticky;
+  top: 0;
   width: 100%;
 }
-nav {
-  display: flex;
-  justify-content: flex-end;
+
+.logo {
+  display: inline-block;
   color: white;
-  /* margin: 35px 99px 0px 0px; */
+  font-size: 60px;
+  margin-left: 10px;
 }
 
-.router a {
-  font-weight: bold;
-  margin-left: 41px;
+.side-menu {
+  height: unset;
+  width: unset;
+}
+ul {
+  list-style: none;
+}
+.nav {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: black;
+  overflow: hidden;
+}
+
+.menu a {
+  display: block;
+  padding: 30px;
   color: white;
-  text-decoration: none;
-  font-weight: 900;
+}
+.menu a:hover {
+  background-color: gray;
 }
 
-.router a.router-link-exact-active {
-  color: #42b983;
-  text-decoration: underline;
+.nav {
+  max-height: 0;
+  transition: max-height 0.5s ease-out;
 }
 
-img {
-  width: 20px;
-  height: 20px;
+.hamb {
+  cursor: pointer;
+  float: right;
+  padding: 40px 20px;
+}
+
+.hamb-line {
+  background: white;
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+}
+
+.hamb-line::before,
+.hamb-line::after {
+  background: white;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+.hamb-line::before {
+  top: 5px;
+}
+.hamb-line::after {
+  top: -5px;
+}
+
+.side-menu {
+  display: none;
+}
+
+.side-menu:checked ~ nav {
+  max-height: 100%;
+}
+.side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top: 0;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    max-height: none;
+    top: 0;
+    position: relative;
+    float: right;
+    width: fit-content;
+    background-color: transparent;
+  }
+  .menu li {
+    float: left;
+  }
+  .menu a:hover {
+    background-color: transparent;
+    color: gray;
+  }
+
+  .hamb {
+    display: none;
+  }
 }
 </style>

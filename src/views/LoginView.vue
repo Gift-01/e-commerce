@@ -13,12 +13,11 @@
         />
         <button type="submit">Login</button>
       </div>
-      <div>
+      <div class="router">
         I don't have an account?
         <router-link to="/signup"> Sign up</router-link>
       </div>
     </form>
-    <!-- <img :src="bg" alt="flower" /> -->
   </div>
 </template>
 
@@ -71,6 +70,7 @@ input {
   height: 75px;
   border-radius: 80px;
   margin-bottom: 25px;
+  padding-left: 20px;
   outline: none;
   background-color: rgb(187, 184, 184);
   border: none;
@@ -79,6 +79,19 @@ input {
 input::placeholder {
   padding-left: 15px;
   color: black;
+}
+
+.router {
+  margin-left: 65px;
+}
+
+a {
+  color: red;
+  text-decoration: none;
+  font-weight: bolder;
+}
+a:hover {
+  color: rgb(190, 81, 81);
 }
 
 button {
