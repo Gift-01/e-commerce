@@ -18,7 +18,6 @@
 
 <script>
 import TheNavigation from "@/components/TheNavigation.vue";
-import bgImages from "../assets/retro-flowers.webp";
 import homePage from "../assets/happy-family-couple-with-shopping-man-woman-with-bags-big-sale-illustration_165429-519.avif";
 
 export default {
@@ -27,7 +26,6 @@ export default {
   },
   data: function () {
     return {
-      bg: bgImages,
       homePage: homePage,
     };
   },

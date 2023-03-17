@@ -23,7 +23,6 @@
 
 <script>
 import TheNavigation from "../components/TheNavigation.vue";
-import bgImages from "../assets/retro-flowers.webp";
 
 export default {
   components: {
@@ -31,7 +30,6 @@ export default {
   },
   data: function () {
     return {
-      bg: bgImages,
       username: "",
       password: "",
     };
@@ -55,10 +53,11 @@ export default {
   row-gap: 20px;
   justify-content: center;
   align-items: center;
+  margin: 0px 176px;
 }
 form {
-  padding: 10px;
-  margin: 10px;
+  /* padding: 0px 10px;
+  margin: 0px 50px; */
 }
 
 img {
@@ -70,7 +69,7 @@ input {
   height: 75px;
   border-radius: 80px;
   margin-bottom: 25px;
-  padding-left: 20px;
+  /* padding-left: 20px; */
   outline: none;
   background-color: rgb(187, 184, 184);
   border: none;
@@ -103,5 +102,6 @@ button {
   margin-bottom: 25px;
   font-size: 24px;
   font-weight: 700;
+  cursor: pointer;
 }
 </style>

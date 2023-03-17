@@ -1,5 +1,3 @@
-<!-- eslint-disable vue/no-parsing-error -->
-<!-- eslint-disable prettier/prettier -->
 <template>
   <div>
     <TheNavigation />
@@ -14,7 +12,6 @@
             placeholder="Username"
             required
           />
-          <!-- <font-awesome-icon icon="fa-solid fa-user" /> -->
 
           <input
             v-model="password"
@@ -32,14 +29,13 @@
 
 <script>
 import TheNavigation from "../components/TheNavigation.vue";
-import bgImages from "../assets/retro-flowers.webp";
+
 export default {
   components: {
     TheNavigation,
   },
   data: function () {
     return {
-      bg: bgImages,
       username: "",
       email: "",
       password: "",

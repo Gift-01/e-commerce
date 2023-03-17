@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <a href="#" class="logo">shopify</a>
+    <router-link to="/" class="logo">shopify</router-link>
     <input class="side-menu" type="checkbox" id="side-menu" />
     <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
     <nav class="nav">
@@ -26,12 +26,10 @@
 </template>
 
 <script>
-import bgImages from "../assets/retro-flowers.webp";
 import { useUser } from "@/composables/user";
 export default {
   data: function () {
     return {
-      bg: bgImages,
       user: useUser(),
     };
   },
@@ -56,8 +54,9 @@ export default {
 .logo {
   display: inline-block;
   color: white;
-  font-size: 60px;
-  margin-left: 10px;
+  font-size: 50px;
+  margin-left: 20px;
+  line-height: 60px;
 }
 
 .side-menu {
