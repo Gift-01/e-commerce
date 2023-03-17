@@ -55,10 +55,6 @@ export default {
   align-items: center;
   margin: 0px 176px;
 }
-form {
-  /* padding: 0px 10px;
-  margin: 0px 50px; */
-}
 
 img {
   width: 100%;
