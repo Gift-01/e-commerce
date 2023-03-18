@@ -7,6 +7,8 @@ import Signup from "../views/SignupView.vue";
 import store from "@/store";
 
 function authGuard() {
+  store.dispatch("login", store.getters.loggedInUser);
+
   if (!store.getters.isAuthenticated) {
     return { path: "login" };
   }
@@ -14,7 +16,8 @@ function authGuard() {
 
 function guestGuard() {
   if (store.getters.isAuthenticated) {
-    return { path: "product" };
+    store.dispatch("login", store.getters.loggedInUser);
+    return { path: "products" };
   }
 }
 
@@ -62,6 +65,7 @@ const routes = [
     name: "NotFound",
     component: () => import("../views/NotFound.vue"),
   },
+  { path: "/:catchAll(.*)", redirect: "/404" },
 ];
 
 const router = createRouter({

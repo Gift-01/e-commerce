@@ -12,7 +12,7 @@
           <li>
             <router-link to="/products"> Products</router-link>
           </li>
-          <!-- <span>{{ user.username }}</span> -->
+          <span>{{ user.username }}</span>
           <li>
             <router-link to="#" @click="logout"> Logout</router-link>
           </li>

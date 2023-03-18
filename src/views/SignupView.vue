@@ -3,7 +3,11 @@
     <TheNavigation />
     <router-view></router-view>
 
-    <div class="login-wrapper">
+    <div v-if="authUser">
+      <h2>Signed in as {{ authUser.email }}</h2>
+    </div>
+
+    <div v-else class="login-wrapper">
       <form @submit.prevent="submitForm">
         <div>
           <input
@@ -20,7 +24,7 @@
             required
           />
           <input v-model="email" type="email" placeholder="@ email" required />
-          <button type="submit">Sign up</button>
+          <button type="submit" @click="signup">Sign up</button>
         </div>
       </form>
     </div>
@@ -48,6 +52,7 @@ export default {
         email: this.email,
         password: this.password,
       });
+
       await this.$store.dispatch("login", {
         username: this.username,
         password: this.password,

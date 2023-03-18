@@ -10,6 +10,7 @@
           type="password"
           placeholder="Password"
           required
+          current-password
         />
         <button type="submit">Login</button>
       </div>
@@ -23,24 +24,43 @@
 
 <script>
 import TheNavigation from "../components/TheNavigation.vue";
-
 export default {
   components: {
     TheNavigation,
   },
   data: function () {
     return {
+      usernames: [],
+      passwords: [],
       username: "",
       password: "",
     };
   },
+
   methods: {
     async submitForm() {
       await this.$store.dispatch("login", {
         username: this.username,
         password: this.password,
       });
-      this.$router.push("/products");
+      const users = JSON.parse(localStorage.getItem("users"));
+      if (
+        users.find(
+          (user) =>
+            user.username === this.username && user.password === this.password
+        )
+      ) {
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify({
+            username: this.username,
+            password: this.password,
+          })
+        );
+        this.$router.push("/products");
+      } else {
+        alert("Account not found\nKindly register your account");
+      }
     },
   },
 };
@@ -65,7 +85,7 @@ input {
   height: 75px;
   border-radius: 80px;
   margin-bottom: 25px;
-  padding-left: 20px;
+  padding-right: 20px;
   outline: none;
   background-color: rgb(187, 184, 184);
   border: none;
