@@ -120,4 +120,12 @@ button {
   font-weight: 700;
   cursor: pointer;
 }
+@media screen and (max-width: 767px) {
+  .login-wrapper {
+    margin: 0px 52px;
+  }
+  .router {
+    margin-left: 10px;
+  }
+}
 </style>

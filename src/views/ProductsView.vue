@@ -41,19 +41,6 @@ export default {
 </script>
 <style scoped>
 img {
-  /* width: 100px;
-  min-height: 100px;
-  display: flex;
-  border-radius: 50px;
-  margin-left: auto; */
-  /* margin-right: 5vw; */
-  /* background-color: #fff;
-  width: 400px;
-  text-align: center;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 5px; */
-  /* width: 100px; */
   height: 300px;
 }
 .container {
